@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cytokine Recall</title>
+  <meta name="description" content="USMLE Step 1 cytokine study game: matching, rapid fire, reverse, and pro vs anti-inflammatory sorting.">
+  <meta name="theme-color" content="#f7f7f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16181d" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="brand" type="button" aria-label="Home">Cytokine&nbsp;Recall</button>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle light/dark mode" title="Light / dark"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button>
+  </header>
+
+  <main id="app">
+    <p class="loading" id="loading">Loading cytokines…</p>
+
+    <!-- HOME -->
+    <section id="view-home" class="view" hidden>
+      <p class="tagline">USMLE Step 1 cytokines &amp; chemokines — sources, actions, clinical links, and drugs.</p>
+      <div class="mode-grid">
+        <button class="mode-card" data-mode="match" type="button">
+          <span class="mode-title">Matching</span>
+          <span class="mode-desc">Pair 5 cytokines with their facts</span>
+        </button>
+        <button class="mode-card" data-mode="rapid" type="button">
+          <span class="mode-title">Rapid fire</span>
+          <span class="mode-desc">Cytokine → pick the right fact</span>
+        </button>
+        <button class="mode-card" data-mode="reverse" type="button">
+          <span class="mode-title">Reverse</span>
+          <span class="mode-desc">Fact, drug, or vignette → cytokine</span>
+        </button>
+        <button class="mode-card" data-mode="sort" type="button">
+          <span class="mode-title">Pro vs anti</span>
+          <span class="mode-desc">Sort as fast as you can</span>
+        </button>
+        <button class="mode-card weak" data-mode="weak" type="button">
+          <span class="mode-title">Review my weak cytokines</span>
+          <span class="mode-desc" id="weak-desc">Answer some questions first</span>
+        </button>
+      </div>
+      <div class="home-actions">
+        <button class="btn secondary" id="open-settings" type="button">Settings</button>
+        <button class="btn secondary" id="open-stats" type="button">Stats</button>
+      </div>
+      <p class="hint" id="settings-summary"></p>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="view-settings" class="view" hidden>
+      <h2>Settings</h2>
+      <fieldset>
+        <legend>Cytokines to quiz</legend>
+        <div class="seg" role="radiogroup">
+          <label><input type="radio" name="category" value="proinflammatory"><span>Proinflammatory</span></label>
+          <label><input type="radio" name="category" value="anti-inflammatory"><span>Anti-inflammatory</span></label>
+          <label><input type="radio" name="category" value="both"><span>Both</span></label>
+        </div>
+        <p class="hint">Wrong answers can still come from the other group — they make good traps. Pro vs anti always uses every cytokine.</p>
+      </fieldset>
+      <fieldset>
+        <legend>Attribute types</legend>
+        <div class="checks" id="attr-checks"></div>
+        <p class="hint">Used by matching, rapid fire, reverse, and weak review. At least one must stay on.</p>
+      </fieldset>
+      <fieldset>
+        <legend>Timer</legend>
+        <label class="switch"><input type="checkbox" id="timed"><span>60-second timed rounds with a final score</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Appearance</legend>
+        <div class="seg" role="radiogroup">
+          <label><input type="radio" name="theme" value="auto"><span>Auto</span></label>
+          <label><input type="radio" name="theme" value="light"><span>Light</span></label>
+          <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
+        </div>
+      </fieldset>
+      <button class="btn primary wide" data-go="home" type="button">Done</button>
+    </section>
+
+    <!-- GAME -->
+    <section id="view-game" class="view" hidden>
+      <div class="game-bar">
+        <button class="btn ghost small" id="end-game" type="button">End</button>
+        <span class="game-mode" id="game-mode"></span>
+        <span class="game-stats"><span id="game-score">0</span><span class="muted" id="game-attempts"></span></span>
+        <span class="timer" id="game-timer" hidden>60</span>
+      </div>
+      <div id="game-body"></div>
+      <div class="feedback" id="feedback" hidden aria-live="polite">
+        <p class="fb-result" id="fb-result"></p>
+        <p class="fb-explain" id="fb-explain"></p>
+        <p class="fb-note" id="fb-note"></p>
+        <p class="fb-hook" id="fb-hook"></p>
+        <button class="btn primary wide" id="next-btn" type="button">Next <kbd>↵</kbd></button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="view-results" class="view" hidden>
+      <h2 id="results-title">Time!</h2>
+      <div class="big-score"><span id="results-score">0</span><small id="results-unit">correct</small></div>
+      <p class="results-line" id="results-line"></p>
+      <p class="results-best" id="results-best"></p>
+      <div class="home-actions">
+        <button class="btn primary" id="play-again" type="button">Play again</button>
+        <button class="btn secondary" data-go="home" type="button">Home</button>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="view-stats" class="view" hidden>
+      <h2>Your stats</h2>
+      <p id="stats-overall" class="stats-overall"></p>
+      <h3>Accuracy by attribute</h3>
+      <div id="stats-attrs" class="bars"></div>
+      <h3>Most-missed cytokines</h3>
+      <ol id="stats-missed" class="missed"></ol>
+      <h3>Best timed scores</h3>
+      <ul id="stats-best" class="best"></ul>
+      <div class="home-actions">
+        <button class="btn secondary" data-go="home" type="button">Back</button>
+        <button class="btn danger" id="reset-progress" type="button">Reset progress</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

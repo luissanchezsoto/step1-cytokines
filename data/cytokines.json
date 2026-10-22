@@ -1,0 +1,788 @@
+{
+  "version": 1,
+  "categories": {
+    "proinflammatory": "Proinflammatory",
+    "anti-inflammatory": "Anti-inflammatory / Th2"
+  },
+  "cytokines": [
+    {
+      "id": "il1",
+      "name": "IL-1",
+      "aliases": [
+        "IL-1β"
+      ],
+      "category": "proinflammatory",
+      "summary": "Macrophage cytokine of fever, endothelial activation and bone resorption; activated by the inflammasome (caspase-1).",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages/monocytes (also endothelial and dendritic cells)"
+      ],
+      "functions": [
+        "Causes fever",
+        "Osteoclast-activating factor (bone resorption)",
+        "Activates endothelium to express adhesion molecules",
+        "Induces chemokine secretion to recruit WBCs",
+        "Cleaved into active form by caspase-1 (inflammasome)"
+      ],
+      "mnemonic": "\"Hot T-bone stEAK\": IL-1 = Hot (fever).",
+      "clinical": [
+        "Systemic inflammatory response / sepsis",
+        "Gout flares: urate crystals activate the NLRP3 inflammasome",
+        "Bone loss in chronic inflammation (osteoclast activation)"
+      ],
+      "drugs": [
+        {
+          "name": "Anakinra",
+          "mechanism": "Recombinant IL-1 receptor antagonist",
+          "indications": "RA, cryopyrin-associated periodic syndromes, Still disease"
+        },
+        {
+          "name": "Canakinumab",
+          "mechanism": "Anti-IL-1β monoclonal antibody",
+          "indications": "Cryopyrin-associated periodic syndromes, Still disease, gout flares, FMF"
+        },
+        {
+          "name": "Rilonacept",
+          "mechanism": "IL-1 trap (soluble decoy receptor)",
+          "indications": "Cryopyrin-associated periodic syndromes, recurrent pericarditis"
+        }
+      ],
+      "diseases": [
+        "Cryopyrin-associated periodic syndromes (NLRP3 gain-of-function)",
+        "Familial Mediterranean fever (MEFV/pyrin mutation)"
+      ],
+      "scenarios": [
+        {
+          "attr": "disease",
+          "prompt": "A patient has recurrent fevers, an urticaria-like rash, and sensorineural hearing loss. Genetic testing shows a gain-of-function NLRP3 mutation, and symptoms resolve with anakinra. Which cytokine is overproduced?",
+          "explanation": "NLRP3 inflammasome → caspase-1 → excess active IL-1β (cryopyrin-associated periodic syndrome); anakinra blocks the IL-1 receptor."
+        },
+        {
+          "attr": "clinical",
+          "prompt": "Monosodium urate crystals in an inflamed first MTP joint activate the NLRP3 inflammasome. The resulting cytokine causes fever and is blocked by canakinumab. Which cytokine?",
+          "explanation": "Urate crystals → NLRP3 → caspase-1 cleaves pro-IL-1β; canakinumab is an anti-IL-1β antibody."
+        }
+      ]
+    },
+    {
+      "id": "il2",
+      "name": "IL-2",
+      "aliases": [
+        "T-cell growth factor"
+      ],
+      "category": "proinflammatory",
+      "summary": "T-cell growth factor made by activated T cells; target of calcineurin inhibitors and basiliximab.",
+      "sourceGroup": "T cells",
+      "sources": [
+        "Activated T cells (mainly CD4+ helper T cells)"
+      ],
+      "functions": [
+        "Stimulates growth of helper, cytotoxic, and regulatory T cells",
+        "Activates NK cells",
+        "Autocrine T-cell growth signal via its high-affinity receptor (CD25)"
+      ],
+      "mnemonic": "\"Hot T-bone stEAK\": IL-2 = stimulates T cells.",
+      "clinical": [
+        "High-dose therapy causes capillary leak syndrome",
+        "Its production is the main target of transplant immunosuppression"
+      ],
+      "drugs": [
+        {
+          "name": "Aldesleukin",
+          "mechanism": "Recombinant IL-2",
+          "indications": "Metastatic renal cell carcinoma, metastatic melanoma (AE: capillary leak)"
+        },
+        {
+          "name": "Basiliximab",
+          "mechanism": "Monoclonal antibody against the IL-2 receptor α-chain (CD25)",
+          "indications": "Prophylaxis of kidney transplant rejection"
+        },
+        {
+          "name": "Cyclosporine",
+          "mechanism": "Calcineurin inhibitor → blocks NFAT-driven IL-2 transcription",
+          "indications": "Transplant rejection prophylaxis, psoriasis, RA"
+        },
+        {
+          "name": "Tacrolimus",
+          "mechanism": "Binds FKBP → calcineurin inhibition → ↓IL-2 transcription",
+          "indications": "Transplant rejection prophylaxis"
+        },
+        {
+          "name": "Sirolimus (rapamycin)",
+          "mechanism": "mTOR inhibitor → blocks IL-2 signal transduction (T-cell proliferation)",
+          "indications": "Kidney transplant rejection prophylaxis, drug-eluting stents"
+        }
+      ],
+      "diseases": [
+        "X-linked SCID: mutated common γ-chain (CD132) of its receptor"
+      ],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "A patient with metastatic renal cell carcinoma receives aldesleukin and develops hypotension, edema, and weight gain from capillary leak. Aldesleukin is a recombinant form of which cytokine?",
+          "explanation": "Aldesleukin = recombinant IL-2, used for metastatic RCC and melanoma; capillary leak is the classic toxicity."
+        },
+        {
+          "attr": "drug",
+          "prompt": "A kidney transplant recipient takes tacrolimus, which inhibits calcineurin and prevents NFAT activation. Transcription of which T-cell growth factor is reduced?",
+          "explanation": "Calcineurin inhibitors (cyclosporine, tacrolimus) block NFAT → ↓IL-2 transcription → ↓T-cell proliferation."
+        }
+      ]
+    },
+    {
+      "id": "il6",
+      "name": "IL-6",
+      "aliases": [],
+      "category": "proinflammatory",
+      "summary": "Fever plus hepatic acute-phase proteins (CRP, fibrinogen, hepcidin); blocked by tocilizumab.",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages",
+        "Th2 cells (also endothelial cells)"
+      ],
+      "functions": [
+        "Causes fever",
+        "Stimulates hepatic acute-phase protein production (CRP, fibrinogen, hepcidin, ferritin, serum amyloid A)",
+        "Promotes Th17 differentiation (with a partner cytokine)"
+      ],
+      "mnemonic": "\"Hot T-bone stEAK\": IL-6 = aKute-phase proteins.",
+      "clinical": [
+        "Systemic inflammatory response / sepsis",
+        "Anemia of chronic disease (↑hepcidin traps iron)",
+        "Reactive thrombocytosis (↑thrombopoietin)",
+        "Cytokine release syndrome after CAR-T therapy",
+        "Elevated CRP and ESR"
+      ],
+      "drugs": [
+        {
+          "name": "Tocilizumab",
+          "mechanism": "Monoclonal antibody against the IL-6 receptor",
+          "indications": "RA, giant cell arteritis, CAR-T cytokine release syndrome, severe COVID-19"
+        },
+        {
+          "name": "Sarilumab",
+          "mechanism": "Monoclonal antibody against the IL-6 receptor",
+          "indications": "RA, polymyalgia rheumatica"
+        },
+        {
+          "name": "Siltuximab",
+          "mechanism": "Monoclonal antibody against IL-6 itself",
+          "indications": "Multicentric Castleman disease"
+        }
+      ],
+      "diseases": [
+        "Multicentric Castleman disease (HHV-8 encodes a viral homolog)"
+      ],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "Two days after CAR-T cell infusion, a patient develops high fever, hypotension, and hypoxia. Symptoms improve after tocilizumab. Which cytokine pathway was blocked?",
+          "explanation": "Tocilizumab blocks the IL-6 receptor — first-line therapy for CAR-T cytokine release syndrome."
+        },
+        {
+          "attr": "clinical",
+          "prompt": "A patient with long-standing rheumatoid arthritis has anemia with low serum iron, low TIBC, and high ferritin. Which cytokine drives the hepatic hepcidin production responsible?",
+          "explanation": "IL-6 → ↑hepcidin → ferroportin degraded → iron trapped in macrophages (anemia of chronic disease)."
+        }
+      ]
+    },
+    {
+      "id": "il8",
+      "name": "IL-8",
+      "aliases": [
+        "CXCL8"
+      ],
+      "category": "proinflammatory",
+      "summary": "Chemokine (CXCL8) that is the major chemotactic factor for neutrophils.",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages (also endothelial and epithelial cells)"
+      ],
+      "functions": [
+        "Major chemotactic factor for neutrophils",
+        "Promotes neutrophil adhesion and migration into tissue"
+      ],
+      "mnemonic": "\"Clean up on aisle 8\": neutrophils are recruited by IL-8 to clear infections.",
+      "clinical": [
+        "Neutrophil influx in acute inflammation (alongside C5a, LTB4, kallikrein, PAF)"
+      ],
+      "drugs": [],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "clinical",
+          "prompt": "Biopsy of an acute bacterial skin infection shows dense neutrophil infiltration. Which chemokine, made by macrophages and endothelial cells, is the major neutrophil chemoattractant?",
+          "explanation": "IL-8 (CXCL8) — \"clean up on aisle 8\"; other neutrophil chemoattractants include C5a, LTB4, kallikrein, and PAF."
+        }
+      ]
+    },
+    {
+      "id": "il12",
+      "name": "IL-12",
+      "aliases": [],
+      "category": "proinflammatory",
+      "summary": "Macrophage/DC cytokine that drives Th1 differentiation and IFN-γ release; shares the p40 subunit with IL-23.",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages",
+        "dendritic cells (also B cells)"
+      ],
+      "functions": [
+        "Induces Th1 differentiation",
+        "Activates NK cells",
+        "Induces IFN-γ secretion by T cells and NK cells"
+      ],
+      "mnemonic": "IL-12 makes Th1 cells (macrophage IL-12 ⇄ Th1 IFN-γ loop).",
+      "clinical": [
+        "Initiates the Th1–macrophage response against intracellular pathogens (e.g., mycobacteria)"
+      ],
+      "drugs": [
+        {
+          "name": "Ustekinumab",
+          "mechanism": "Monoclonal antibody against the shared p40 subunit of IL-12 and IL-23",
+          "indications": "Psoriasis, psoriatic arthritis, Crohn disease, ulcerative colitis"
+        }
+      ],
+      "diseases": [
+        "Receptor deficiency (AR): ↓Th1 differentiation and ↓IFN-γ → disseminated mycobacterial/Salmonella infection (e.g., after BCG)"
+      ],
+      "scenarios": [
+        {
+          "attr": "disease",
+          "prompt": "An infant develops disseminated infection after BCG vaccination. T cells make little IFN-γ, and the IFN-γ receptor is normal. Treatment with IFN-γ helps. A receptor for which cytokine is most likely defective?",
+          "explanation": "IL-12 receptor deficiency → ↓Th1 differentiation → ↓IFN-γ → disseminated mycobacterial infection; treat with IFN-γ."
+        }
+      ]
+    },
+    {
+      "id": "il17",
+      "name": "IL-17",
+      "aliases": [
+        "IL-17A"
+      ],
+      "category": "proinflammatory",
+      "summary": "Th17 cytokine that recruits neutrophils to barriers; key in psoriasis and anti-Candida defense.",
+      "sourceGroup": "Th17 cells",
+      "sources": [
+        "Th17 cells (also γδ T cells)"
+      ],
+      "functions": [
+        "Induces epithelial cells to release neutrophil-attracting chemokines",
+        "Induces chemokine secretion to recruit WBCs",
+        "Defense against extracellular bacteria and fungi (especially Candida)",
+        "Promotes antimicrobial peptide release at mucosal and skin barriers"
+      ],
+      "mnemonic": "Th17 → IL-17 → neutrophils: think psoriasis and Candida.",
+      "clinical": [
+        "Key driver of plaque psoriasis (Th17 axis)",
+        "Blockade ↑ risk of mucocutaneous candidiasis and can worsen IBD"
+      ],
+      "drugs": [
+        {
+          "name": "Secukinumab",
+          "mechanism": "Monoclonal antibody against IL-17A",
+          "indications": "Psoriasis, psoriatic arthritis, ankylosing spondylitis"
+        },
+        {
+          "name": "Ixekizumab",
+          "mechanism": "Monoclonal antibody against IL-17A",
+          "indications": "Psoriasis, psoriatic arthritis, ankylosing spondylitis"
+        },
+        {
+          "name": "Brodalumab",
+          "mechanism": "Monoclonal antibody against IL-17 receptor A",
+          "indications": "Psoriasis"
+        }
+      ],
+      "diseases": [
+        "Hyper-IgE (Job) syndrome: STAT3 mutation → impaired Th17 cells → ↓neutrophil recruitment",
+        "Chronic mucocutaneous candidiasis (Th17 pathway defects, e.g., autoantibodies in AIRE-deficient APS-1)"
+      ],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "A patient with plaque psoriasis responds well to secukinumab but develops oral thrush. Which cytokine was blocked?",
+          "explanation": "Secukinumab blocks IL-17A; IL-17 is essential for mucocutaneous anti-Candida immunity."
+        },
+        {
+          "attr": "disease",
+          "prompt": "A child has eczema, recurrent \"cold\" staphylococcal abscesses, retained primary teeth, and very high IgE. A STAT3 mutation impairs Th17 cells. Deficiency of which cytokine explains the poor neutrophil recruitment?",
+          "explanation": "Hyper-IgE (Job) syndrome: STAT3 defect → ↓Th17 → ↓IL-17 → impaired neutrophil recruitment (\"cold\" abscesses)."
+        }
+      ]
+    },
+    {
+      "id": "il18",
+      "name": "IL-18",
+      "aliases": [
+        "IFN-γ-inducing factor"
+      ],
+      "category": "proinflammatory",
+      "summary": "Inflammasome-processed (caspase-1) cytokine that synergizes with IL-12 to induce IFN-γ.",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages",
+        "dendritic cells"
+      ],
+      "functions": [
+        "Cleaved into active form by caspase-1 (inflammasome)",
+        "Induces IFN-γ secretion by T cells and NK cells",
+        "Activates NK cells"
+      ],
+      "mnemonic": "IL-18 = IL-1's inflammasome twin; teams with IL-12 to boost IFN-γ.",
+      "clinical": [
+        "Markedly elevated in adult-onset Still disease and macrophage activation syndrome"
+      ],
+      "drugs": [],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "clinical",
+          "prompt": "A patient with adult-onset Still disease has quotidian fevers, salmon-colored rash, and extremely high ferritin. A strikingly elevated cytokine is cleaved by caspase-1 and potently induces IFN-γ. Which cytokine?",
+          "explanation": "IL-18: processed by the inflammasome (like IL-1β) and synergizes with IL-12 to induce IFN-γ; very high in Still disease/MAS."
+        }
+      ]
+    },
+    {
+      "id": "il23",
+      "name": "IL-23",
+      "aliases": [],
+      "category": "proinflammatory",
+      "summary": "Macrophage/DC cytokine that maintains Th17 cells; p19 + p40 (p40 shared with IL-12).",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages",
+        "dendritic cells"
+      ],
+      "functions": [
+        "Maintains and expands Th17 cells",
+        "Sustains Th17 cytokine output in chronic inflammation"
+      ],
+      "mnemonic": "IL-23 feeds Th17 (2 + 3 → keeps the 17s going).",
+      "clinical": [
+        "Key driver of plaque psoriasis (Th17 axis)",
+        "Crohn disease and ulcerative colitis: p19-subunit blockade is effective"
+      ],
+      "drugs": [
+        {
+          "name": "Ustekinumab",
+          "mechanism": "Monoclonal antibody against the shared p40 subunit of IL-12 and IL-23",
+          "indications": "Psoriasis, psoriatic arthritis, Crohn disease, ulcerative colitis"
+        },
+        {
+          "name": "Guselkumab",
+          "mechanism": "Monoclonal antibody against the IL-23 p19 subunit",
+          "indications": "Psoriasis, psoriatic arthritis, IBD"
+        },
+        {
+          "name": "Risankizumab",
+          "mechanism": "Monoclonal antibody against the IL-23 p19 subunit",
+          "indications": "Psoriasis, psoriatic arthritis, Crohn disease, ulcerative colitis"
+        },
+        {
+          "name": "Tildrakizumab",
+          "mechanism": "Monoclonal antibody against the IL-23 p19 subunit",
+          "indications": "Psoriasis"
+        }
+      ],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "A patient with plaque psoriasis starts guselkumab, a monoclonal antibody against a p19 subunit. Which cytokine is blocked?",
+          "explanation": "p19 is unique to IL-23 (p40 is shared with IL-12); guselkumab, risankizumab, and tildrakizumab are anti-IL-23."
+        }
+      ]
+    },
+    {
+      "id": "tnfa",
+      "name": "TNF-α",
+      "aliases": [
+        "TNF-alpha",
+        "cachectin"
+      ],
+      "category": "proinflammatory",
+      "summary": "Macrophage cytokine of septic shock, cachexia, vascular leak, and granuloma maintenance.",
+      "sourceGroup": "Macrophages",
+      "sources": [
+        "Macrophages (also T cells and mast cells)"
+      ],
+      "functions": [
+        "Causes fever",
+        "Activates endothelium to express adhesion molecules",
+        "Induces chemokine secretion to recruit WBCs",
+        "Increases vascular permeability (vascular leak)",
+        "Maintains granulomas (e.g., in TB)",
+        "Can trigger extrinsic-pathway apoptosis via its death receptor"
+      ],
+      "mnemonic": "\"Etanercept intercepts TNF\"; TNF-α = septic shock, cachexia, granulomas.",
+      "clinical": [
+        "Systemic inflammatory response / sepsis",
+        "Mediates septic shock (hypotension, vascular leak)",
+        "Cachexia in malignancy and chronic disease",
+        "Blockade → reactivation of latent TB (granulomas break down); screen with PPD/IGRA first"
+      ],
+      "drugs": [
+        {
+          "name": "Infliximab",
+          "mechanism": "Chimeric monoclonal antibody against TNF-α",
+          "indications": "IBD, RA, ankylosing spondylitis, psoriasis, psoriatic arthritis"
+        },
+        {
+          "name": "Adalimumab",
+          "mechanism": "Human monoclonal antibody against TNF-α",
+          "indications": "IBD, RA, ankylosing spondylitis, psoriasis, psoriatic arthritis, hidradenitis suppurativa"
+        },
+        {
+          "name": "Certolizumab",
+          "mechanism": "PEGylated Fab fragment against TNF-α",
+          "indications": "Crohn disease, RA, ankylosing spondylitis, psoriatic arthritis"
+        },
+        {
+          "name": "Golimumab",
+          "mechanism": "Human monoclonal antibody against TNF-α",
+          "indications": "RA, ankylosing spondylitis, psoriatic arthritis, ulcerative colitis"
+        },
+        {
+          "name": "Etanercept",
+          "mechanism": "Decoy TNF receptor fused to IgG1 Fc (binds TNF-α)",
+          "indications": "RA, psoriasis, psoriatic arthritis, ankylosing spondylitis — NOT IBD"
+        }
+      ],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "A patient with Crohn disease on infliximab develops fever, night sweats, and a cavitary upper-lobe lung lesion. Which cytokine was blocked?",
+          "explanation": "TNF-α maintains granulomas; anti-TNF therapy causes reactivation of latent TB — screen with PPD/IGRA first."
+        },
+        {
+          "attr": "clinical",
+          "prompt": "A patient with metastatic pancreatic cancer has profound weight loss and muscle wasting despite adequate intake. Which macrophage cytokine is a key mediator of this cachexia?",
+          "explanation": "TNF-α (\"cachectin\") mediates cancer cachexia."
+        }
+      ]
+    },
+    {
+      "id": "ifng",
+      "name": "IFN-γ",
+      "aliases": [
+        "IFN-gamma",
+        "type II interferon"
+      ],
+      "category": "proinflammatory",
+      "summary": "Th1/NK cytokine that activates macrophages, ↑MHC I and II, and drives granulomas.",
+      "sourceGroup": "Th1 / NK cells",
+      "sources": [
+        "Th1 cells",
+        "NK cells",
+        "CD8+ T cells"
+      ],
+      "functions": [
+        "Activates macrophages to kill phagocytosed pathogens",
+        "Increases MHC class I expression",
+        "Increases MHC class II expression and antigen presentation",
+        "Induces Th1 differentiation",
+        "Inhibits Th2 differentiation",
+        "Induces IgG class switching",
+        "Activates NK cells"
+      ],
+      "mnemonic": "Th1 → IFN-γ → macrophages (\"gamma activates macrophages\").",
+      "clinical": [
+        "Drives granuloma formation (macrophages → epithelioid cells), e.g., TB, sarcoidosis",
+        "Measured by IGRA (QuantiFERON) to detect latent TB"
+      ],
+      "drugs": [
+        {
+          "name": "Interferon gamma-1b",
+          "mechanism": "Recombinant IFN-γ",
+          "indications": "Chronic granulomatous disease (↓infections), severe malignant osteopetrosis"
+        },
+        {
+          "name": "Emapalumab",
+          "mechanism": "Monoclonal antibody against IFN-γ",
+          "indications": "Primary hemophagocytic lymphohistiocytosis (HLH)"
+        }
+      ],
+      "diseases": [
+        "Receptor deficiency: macrophages cannot be activated despite normal Th1 output → disseminated atypical mycobacteria"
+      ],
+      "scenarios": [
+        {
+          "attr": "disease",
+          "prompt": "A child has recurrent disseminated Mycobacterium avium infections. T cells secrete normal amounts of a cytokine, but macrophages cannot respond to it. A receptor for which cytokine is defective?",
+          "explanation": "IFN-γ receptor deficiency: macrophages are not activated → disseminated mycobacterial infection."
+        },
+        {
+          "attr": "drug",
+          "prompt": "A boy with recurrent catalase-positive infections and an abnormal dihydrorhodamine test is started on a recombinant cytokine to reduce infections. Which cytokine?",
+          "explanation": "Recombinant IFN-γ is used in chronic granulomatous disease (NADPH oxidase defect)."
+        }
+      ]
+    },
+    {
+      "id": "ifnab",
+      "name": "IFN-α/β",
+      "aliases": [
+        "IFN-alpha",
+        "IFN-beta",
+        "type I interferons"
+      ],
+      "category": "proinflammatory",
+      "summary": "Type I interferons from virus-infected cells that induce an antiviral state (RNase L, PKR) and ↑MHC I.",
+      "sourceGroup": "Virus-infected cells",
+      "sources": [
+        "Virus-infected cells (IFN-α: plasmacytoid dendritic cells; IFN-β: fibroblasts)"
+      ],
+      "functions": [
+        "Induces an antiviral state in nearby uninfected cells",
+        "Activates RNase L (degrades mRNA) and protein kinase R (halts translation)",
+        "Increases MHC class I expression",
+        "Activates NK cells"
+      ],
+      "mnemonic": "Interferons \"interfere\" with viral replication; IFN-β for MS.",
+      "clinical": [
+        "Interferon signature in SLE",
+        "Therapeutic use causes flulike symptoms, depression, and neutropenia"
+      ],
+      "drugs": [
+        {
+          "name": "Interferon-α (recombinant)",
+          "mechanism": "Recombinant type I interferon",
+          "indications": "Chronic hepatitis B, Kaposi sarcoma, hairy cell leukemia, condyloma acuminatum, melanoma, RCC (AE: flulike symptoms, depression, neutropenia)"
+        },
+        {
+          "name": "Interferon-β (recombinant)",
+          "mechanism": "Recombinant type I interferon",
+          "indications": "Relapsing multiple sclerosis"
+        },
+        {
+          "name": "Anifrolumab",
+          "mechanism": "Monoclonal antibody against the type I interferon receptor",
+          "indications": "Systemic lupus erythematosus"
+        }
+      ],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "A patient with relapsing-remitting multiple sclerosis starts an injectable cytokine therapy and develops flulike symptoms after each dose. Which cytokine was prescribed?",
+          "explanation": "IFN-β (a type I interferon) is used for relapsing MS; flulike symptoms are common."
+        },
+        {
+          "attr": "function",
+          "prompt": "Virus-infected cells release a cytokine that makes neighboring cells activate RNase L and protein kinase R, halting viral protein synthesis. Which cytokine?",
+          "explanation": "Type I interferons (IFN-α/β) induce an antiviral state via RNase L and PKR."
+        }
+      ]
+    },
+    {
+      "id": "il4",
+      "name": "IL-4",
+      "aliases": [],
+      "category": "anti-inflammatory",
+      "summary": "Th2 cytokine that makes more Th2 cells and switches B cells to IgE (and IgG).",
+      "sourceGroup": "Th2 cells",
+      "sources": [
+        "Th2 cells (also mast cells and basophils)"
+      ],
+      "functions": [
+        "Induces Th2 differentiation",
+        "Promotes B-cell growth and differentiation",
+        "Induces IgE class switching",
+        "Induces IgG class switching"
+      ],
+      "mnemonic": "\"Hot T-bone stEAK\": IL-4 = IgE.",
+      "clinical": [
+        "Type I (IgE-mediated) hypersensitivity / allergy",
+        "Atopic dermatitis",
+        "Defense against helminths (Th2 response)"
+      ],
+      "drugs": [
+        {
+          "name": "Dupilumab",
+          "mechanism": "Monoclonal antibody against IL-4 receptor α (blocks IL-4 and IL-13 signaling)",
+          "indications": "Atopic dermatitis, asthma, chronic rhinosinusitis with nasal polyps, eosinophilic esophagitis"
+        }
+      ],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "function",
+          "prompt": "After exposure to an allergen, naive CD4+ T cells differentiate into Th2 cells. Which cytokine drives this differentiation?",
+          "explanation": "IL-4 induces Th2 differentiation (IL-12 drives Th1; TGF-β + IL-6 drive Th17)."
+        }
+      ]
+    },
+    {
+      "id": "il5",
+      "name": "IL-5",
+      "aliases": [],
+      "category": "anti-inflammatory",
+      "summary": "Th2 cytokine for eosinophils and IgA switching; blocked by mepolizumab.",
+      "sourceGroup": "Th2 cells",
+      "sources": [
+        "Th2 cells (also mast cells and ILC2s)"
+      ],
+      "functions": [
+        "Stimulates eosinophil growth, differentiation, and activation",
+        "Induces IgA class switching",
+        "Promotes B-cell growth and differentiation"
+      ],
+      "mnemonic": "\"Hot T-bone stEAK\": IL-5 = IgA (and Eosinophils).",
+      "clinical": [
+        "Severe eosinophilic asthma",
+        "Eosinophilia in helminth infection and allergy",
+        "Defense against helminths (Th2 response)"
+      ],
+      "drugs": [
+        {
+          "name": "Mepolizumab",
+          "mechanism": "Monoclonal antibody against IL-5",
+          "indications": "Severe eosinophilic asthma, EGPA, hypereosinophilic syndrome"
+        },
+        {
+          "name": "Reslizumab",
+          "mechanism": "Monoclonal antibody against IL-5",
+          "indications": "Severe eosinophilic asthma"
+        },
+        {
+          "name": "Benralizumab",
+          "mechanism": "Monoclonal antibody against IL-5 receptor α",
+          "indications": "Severe eosinophilic asthma"
+        }
+      ],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "drug",
+          "prompt": "A patient with severe asthma, nasal polyps, and marked peripheral eosinophilia improves on mepolizumab. Which cytokine is neutralized?",
+          "explanation": "Mepolizumab (and reslizumab) bind IL-5; benralizumab blocks the IL-5 receptor."
+        }
+      ]
+    },
+    {
+      "id": "il10",
+      "name": "IL-10",
+      "aliases": [],
+      "category": "anti-inflammatory",
+      "summary": "Treg cytokine that attenuates inflammation: ↓MHC II and Th1 cytokines, inhibits activated macrophages.",
+      "sourceGroup": "Regulatory T cells",
+      "sources": [
+        "Regulatory T cells",
+        "Th2 cells"
+      ],
+      "functions": [
+        "Attenuates the inflammatory response",
+        "Decreases MHC class II expression and Th1 cytokine production",
+        "Inhibits activated macrophages and dendritic cells"
+      ],
+      "mnemonic": "TGF-β and IL-10 \"tone down\" (attenuate) the immune response.",
+      "clinical": [
+        "EBV makes a viral homolog to evade immunity",
+        "Very-early-onset IBD with receptor mutations"
+      ],
+      "drugs": [],
+      "diseases": [
+        "IPEX syndrome (FOXP3 mutation): loss of Treg suppressive cytokines → autoimmunity"
+      ],
+      "scenarios": [
+        {
+          "attr": "clinical",
+          "prompt": "An infant has severe colitis and perianal fistulas in the first months of life. Genetic testing shows a receptor mutation for the anti-inflammatory cytokine that inhibits activated macrophages and ↓MHC II. Which cytokine?",
+          "explanation": "IL-10/IL-10 receptor defects cause very-early-onset IBD; IL-10 normally restrains macrophages in the gut."
+        }
+      ]
+    },
+    {
+      "id": "il13",
+      "name": "IL-13",
+      "aliases": [],
+      "category": "anti-inflammatory",
+      "summary": "Th2 cytokine for IgE production, mucus, and alternative (M2) macrophage activation.",
+      "sourceGroup": "Th2 cells",
+      "sources": [
+        "Th2 cells (also ILC2s and mast cells)"
+      ],
+      "functions": [
+        "Induces IgE class switching",
+        "Induces alternative (M2) macrophage activation",
+        "Drives airway mucus hypersecretion and hyperresponsiveness"
+      ],
+      "mnemonic": "IL-13 = IL-4's partner: IgE plus mucus (\"13 = sneeze and wheeze\").",
+      "clinical": [
+        "Atopic dermatitis",
+        "Defense against helminths (Th2 response)"
+      ],
+      "drugs": [
+        {
+          "name": "Dupilumab",
+          "mechanism": "Monoclonal antibody against IL-4 receptor α (blocks IL-4 and IL-13 signaling)",
+          "indications": "Atopic dermatitis, asthma, chronic rhinosinusitis with nasal polyps, eosinophilic esophagitis"
+        },
+        {
+          "name": "Tralokinumab",
+          "mechanism": "Monoclonal antibody against IL-13",
+          "indications": "Atopic dermatitis"
+        },
+        {
+          "name": "Lebrikizumab",
+          "mechanism": "Monoclonal antibody against IL-13",
+          "indications": "Atopic dermatitis"
+        }
+      ],
+      "diseases": [],
+      "scenarios": [
+        {
+          "attr": "function",
+          "prompt": "In allergic asthma, which Th2 cytokine directly drives goblet-cell mucus hypersecretion and alternative (M2) macrophage activation?",
+          "explanation": "IL-13: IgE production, mucus hypersecretion, airway hyperresponsiveness, M2 macrophages."
+        }
+      ]
+    },
+    {
+      "id": "tgfb",
+      "name": "TGF-β",
+      "aliases": [
+        "TGF-beta"
+      ],
+      "category": "anti-inflammatory",
+      "summary": "Treg cytokine that attenuates immunity, drives IgA switching and fibrosis; with IL-6 makes Th17.",
+      "sourceGroup": "Regulatory T cells",
+      "sources": [
+        "Regulatory T cells (also macrophages, platelets, and many tissue cells)"
+      ],
+      "functions": [
+        "Attenuates the inflammatory response",
+        "Inhibits T-cell proliferation",
+        "Induces IgA class switching",
+        "Promotes Th17 differentiation (with a partner cytokine)",
+        "Promotes fibrosis and wound healing (fibroblast collagen synthesis)"
+      ],
+      "mnemonic": "TGF-β and IL-10 \"tone down\" (attenuate) the immune response.",
+      "clinical": [
+        "Fibrosis and scarring (e.g., pulmonary fibrosis, keloids)",
+        "Marfan syndrome: defective fibrillin-1 → excess signaling → aortic root dilation",
+        "Loeys-Dietz syndrome: receptor mutation → aortic aneurysm"
+      ],
+      "drugs": [
+        {
+          "name": "Pirfenidone",
+          "mechanism": "Antifibrotic that ↓TGF-β production/signaling",
+          "indications": "Idiopathic pulmonary fibrosis"
+        }
+      ],
+      "diseases": [
+        "IPEX syndrome (FOXP3 mutation): loss of Treg suppressive cytokines → autoimmunity",
+        "SMAD4 (DPC4) loss in pancreatic adenocarcinoma disrupts this growth-inhibitory pathway"
+      ],
+      "scenarios": [
+        {
+          "attr": "clinical",
+          "prompt": "A tall patient with lens subluxation has progressive aortic root dilation. Defective fibrillin-1 fails to sequester a growth factor, increasing its signaling. Which cytokine?",
+          "explanation": "Marfan syndrome: fibrillin-1 normally binds latent TGF-β; excess TGF-β signaling drives aortic disease."
+        }
+      ]
+    }
+  ]
+}
